@@ -1,0 +1,1295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="V1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="actionType">
+          <Key>
+            <PropertyRef Name="actionTypeID" />
+          </Key>
+          <Property Name="actionTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="actionDesc" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="empID" />
+          </Key>
+          <Property Name="empID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="employeeNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="opco" Type="nvarchar" MaxLength="30" />
+          <Property Name="businessArDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="businessUnitDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="managerFirst" Type="nvarchar" MaxLength="50" />
+          <Property Name="managerLast" Type="nvarchar" MaxLength="50" />
+          <Property Name="managerEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="permFlag" Type="int" />
+          <Property Name="contractFlag" Type="int" />
+        </EntityType>
+        <EntityType Name="empRel">
+          <Key>
+            <PropertyRef Name="empRelId" />
+          </Key>
+          <Property Name="EID" Type="bigint" />
+          <Property Name="MID" Type="bigint" />
+          <Property Name="empRelId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fileInfo">
+          <Key>
+            <PropertyRef Name="FID" />
+          </Key>
+          <Property Name="FID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="volID" Type="bigint" />
+          <Property Name="pciFlag" Type="int" />
+          <Property Name="piiFlag" Type="int" />
+          <Property Name="specFlag" Type="int" />
+          <Property Name="retFlag" Type="int" />
+          <Property Name="unknownFlag" Type="int" />
+          <Property Name="publicFlag" Type="int" />
+          <Property Name="internalFlag" Type="int" />
+          <Property Name="confidentialFlag" Type="int" />
+          <Property Name="confidentialsFlag" Type="int" />
+          <Property Name="secretFlag" Type="int" />
+        </EntityType>
+        <EntityType Name="fileNote">
+          <Key>
+            <PropertyRef Name="fileNoteID" />
+          </Key>
+          <Property Name="fileNoteID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FID" Type="bigint" />
+          <Property Name="note" Type="nvarchar" MaxLength="500" />
+          <Property Name="noteTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="fileNoteFIDRel">
+          <Key>
+            <PropertyRef Name="fileNoteFIDRelId" />
+          </Key>
+          <Property Name="FID" Type="bigint" />
+          <Property Name="fileNoteID" Type="bigint" />
+          <Property Name="fileNoteFIDRelId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="filterTypeRef">
+          <Key>
+            <PropertyRef Name="filterTypeID" />
+          </Key>
+          <Property Name="filterTypeID" Type="int" Nullable="false" />
+          <Property Name="filterDescription" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="nfsAction">
+          <Key>
+            <PropertyRef Name="actionID" />
+          </Key>
+          <Property Name="actionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="actionTypeID" Type="int" />
+          <Property Name="FID" Type="bigint" />
+          <Property Name="empID" Type="bigint" />
+          <Property Name="actionTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PCI">
+          <Key>
+            <PropertyRef Name="pciID" />
+          </Key>
+          <Property Name="FID" Type="bigint" />
+          <Property Name="pciID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="filtertypeID" Type="int" />
+          <Property Name="pciFileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="pciPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="pciContainerPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="pciVolumeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="pciObjectType" Type="nvarchar" MaxLength="50" />
+          <Property Name="pciOwner" Type="nvarchar" MaxLength="100" />
+          <Property Name="pciSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="pciCtime" Type="nvarchar" MaxLength="50" />
+          <Property Name="pciMTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="pciATime" Type="nvarchar" MaxLength="50" />
+          <Property Name="pciMD5" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PII">
+          <Key>
+            <PropertyRef Name="piiID" />
+          </Key>
+          <Property Name="FID" Type="bigint" />
+          <Property Name="piiID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="filtertypeID" Type="int" />
+          <Property Name="piiFileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="piiPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="piiContainerPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="piiVolumeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="piiObjectType" Type="nvarchar" MaxLength="50" />
+          <Property Name="piiOwner" Type="nvarchar" MaxLength="100" />
+          <Property Name="piiSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="piiCtime" Type="nvarchar" MaxLength="50" />
+          <Property Name="piiMTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="piiATime" Type="nvarchar" MaxLength="50" />
+          <Property Name="piiMD5" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RET">
+          <Key>
+            <PropertyRef Name="retID" />
+          </Key>
+          <Property Name="FID" Type="bigint" />
+          <Property Name="retID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="filtertypeID" Type="int" />
+          <Property Name="retFileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="retPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="retContainerPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="retVolumeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="retObjectType" Type="nvarchar" MaxLength="50" />
+          <Property Name="retOwner" Type="nvarchar" MaxLength="100" />
+          <Property Name="retSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="retCtime" Type="nvarchar" MaxLength="50" />
+          <Property Name="retMTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="retATime" Type="nvarchar" MaxLength="50" />
+          <Property Name="retMD5" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SPEC">
+          <Key>
+            <PropertyRef Name="specID" />
+          </Key>
+          <Property Name="FID" Type="bigint" />
+          <Property Name="specID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="filtertypeID" Type="int" />
+          <Property Name="specFileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="specPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="specContainerPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="specVolumeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="specObjectType" Type="nvarchar" MaxLength="50" />
+          <Property Name="specOwner" Type="nvarchar" MaxLength="100" />
+          <Property Name="specSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="specCtime" Type="nvarchar" MaxLength="50" />
+          <Property Name="specMTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="specATime" Type="nvarchar" MaxLength="50" />
+          <Property Name="specMD5" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="unknown">
+          <Key>
+            <PropertyRef Name="unkID" />
+          </Key>
+          <Property Name="FID" Type="bigint" />
+          <Property Name="unkID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="filtertypeID" Type="int" />
+          <Property Name="unkFileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="unkPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="unkContainerPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="unkVolumeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="unkObjectType" Type="nvarchar" MaxLength="50" />
+          <Property Name="unkOwner" Type="nvarchar" MaxLength="100" />
+          <Property Name="unkSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="unkCtime" Type="nvarchar" MaxLength="50" />
+          <Property Name="unkMTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="unkATime" Type="nvarchar" MaxLength="50" />
+          <Property Name="unkMD5" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="volume">
+          <Key>
+            <PropertyRef Name="volID" />
+          </Key>
+          <Property Name="volID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="volumeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="volumeLastRefresh" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__empRel__EID__52593CB8">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="empRel" Type="Self.empRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="empID" />
+            </Principal>
+            <Dependent Role="empRel">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__empRel__MID__534D60F1">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="empRel" Type="Self.empRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="empID" />
+            </Principal>
+            <Dependent Role="empRel">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__fileInfo__volID__398D8EEE">
+          <End Role="volume" Type="Self.volume" Multiplicity="0..1" />
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="volume">
+              <PropertyRef Name="volID" />
+            </Principal>
+            <Dependent Role="fileInfo">
+              <PropertyRef Name="volID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__fileNote__FID__5629CD9C">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="fileNote" Type="Self.fileNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="fileNote">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__fileNoteF__fileN__59063A47">
+          <End Role="fileNote" Type="Self.fileNote" Multiplicity="0..1" />
+          <End Role="fileNoteFIDRel" Type="Self.fileNoteFIDRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileNote">
+              <PropertyRef Name="fileNoteID" />
+            </Principal>
+            <Dependent Role="fileNoteFIDRel">
+              <PropertyRef Name="fileNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__fileNoteFID__FID__5812160E">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="fileNoteFIDRel" Type="Self.fileNoteFIDRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="fileNoteFIDRel">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__nfsAction__actio__5DCAEF64">
+          <End Role="actionType" Type="Self.actionType" Multiplicity="0..1" />
+          <End Role="nfsAction" Type="Self.nfsAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="actionType">
+              <PropertyRef Name="actionTypeID" />
+            </Principal>
+            <Dependent Role="nfsAction">
+              <PropertyRef Name="actionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__nfsAction__empID__5FB337D6">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="nfsAction" Type="Self.nfsAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="empID" />
+            </Principal>
+            <Dependent Role="nfsAction">
+              <PropertyRef Name="empID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__nfsAction__FID__5EBF139D">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="nfsAction" Type="Self.nfsAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="nfsAction">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PCI__FID__4222D4EF">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="PCI" Type="Self.PCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="PCI">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PCI__filtertypeI__4316F928">
+          <End Role="filterTypeRef" Type="Self.filterTypeRef" Multiplicity="0..1" />
+          <End Role="PCI" Type="Self.PCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filterTypeRef">
+              <PropertyRef Name="filterTypeID" />
+            </Principal>
+            <Dependent Role="PCI">
+              <PropertyRef Name="filtertypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PII__FID__3E52440B">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="PII" Type="Self.PII" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="PII">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PII__filtertypeI__3F466844">
+          <End Role="filterTypeRef" Type="Self.filterTypeRef" Multiplicity="0..1" />
+          <End Role="PII" Type="Self.PII" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filterTypeRef">
+              <PropertyRef Name="filterTypeID" />
+            </Principal>
+            <Dependent Role="PII">
+              <PropertyRef Name="filtertypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RET__FID__45F365D3">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="RET" Type="Self.RET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="RET">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RET__filtertypeI__46E78A0C">
+          <End Role="filterTypeRef" Type="Self.filterTypeRef" Multiplicity="0..1" />
+          <End Role="RET" Type="Self.RET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filterTypeRef">
+              <PropertyRef Name="filterTypeID" />
+            </Principal>
+            <Dependent Role="RET">
+              <PropertyRef Name="filtertypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SPEC__FID__4D94879B">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="SPEC" Type="Self.SPEC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="SPEC">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SPEC__filtertype__4E88ABD4">
+          <End Role="filterTypeRef" Type="Self.filterTypeRef" Multiplicity="0..1" />
+          <End Role="SPEC" Type="Self.SPEC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filterTypeRef">
+              <PropertyRef Name="filterTypeID" />
+            </Principal>
+            <Dependent Role="SPEC">
+              <PropertyRef Name="filtertypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__unknown__FID__49C3F6B7">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="unknown" Type="Self.unknown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="unknown">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__unknown__filtert__4AB81AF0">
+          <End Role="filterTypeRef" Type="Self.filterTypeRef" Multiplicity="0..1" />
+          <End Role="unknown" Type="Self.unknown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filterTypeRef">
+              <PropertyRef Name="filterTypeID" />
+            </Principal>
+            <Dependent Role="unknown">
+              <PropertyRef Name="filtertypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="V1ModelStoreContainer">
+          <EntitySet Name="actionType" EntityType="Self.actionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="empRel" EntityType="Self.empRel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fileInfo" EntityType="Self.fileInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fileNote" EntityType="Self.fileNote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fileNoteFIDRel" EntityType="Self.fileNoteFIDRel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="filterTypeRef" EntityType="Self.filterTypeRef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nfsAction" EntityType="Self.nfsAction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PCI" EntityType="Self.PCI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PII" EntityType="Self.PII" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RET" EntityType="Self.RET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SPEC" EntityType="Self.SPEC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="unknown" EntityType="Self.unknown" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="volume" EntityType="Self.volume" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__empRel__EID__52593CB8" Association="Self.FK__empRel__EID__52593CB8">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="empRel" EntitySet="empRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__empRel__MID__534D60F1" Association="Self.FK__empRel__MID__534D60F1">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="empRel" EntitySet="empRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__fileInfo__volID__398D8EEE" Association="Self.FK__fileInfo__volID__398D8EEE">
+            <End Role="volume" EntitySet="volume" />
+            <End Role="fileInfo" EntitySet="fileInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__fileNote__FID__5629CD9C" Association="Self.FK__fileNote__FID__5629CD9C">
+            <End Role="fileInfo" EntitySet="fileInfo" />
+            <End Role="fileNote" EntitySet="fileNote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__fileNoteF__fileN__59063A47" Association="Self.FK__fileNoteF__fileN__59063A47">
+            <End Role="fileNote" EntitySet="fileNote" />
+            <End Role="fileNoteFIDRel" EntitySet="fileNoteFIDRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__fileNoteFID__FID__5812160E" Association="Self.FK__fileNoteFID__FID__5812160E">
+            <End Role="fileInfo" EntitySet="fileInfo" />
+            <End Role="fileNoteFIDRel" EntitySet="fileNoteFIDRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__nfsAction__actio__5DCAEF64" Association="Self.FK__nfsAction__actio__5DCAEF64">
+            <End Role="actionType" EntitySet="actionType" />
+            <End Role="nfsAction" EntitySet="nfsAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__nfsAction__empID__5FB337D6" Association="Self.FK__nfsAction__empID__5FB337D6">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="nfsAction" EntitySet="nfsAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__nfsAction__FID__5EBF139D" Association="Self.FK__nfsAction__FID__5EBF139D">
+            <End Role="fileInfo" EntitySet="fileInfo" />
+            <End Role="nfsAction" EntitySet="nfsAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PCI__FID__4222D4EF" Association="Self.FK__PCI__FID__4222D4EF">
+            <End Role="fileInfo" EntitySet="fileInfo" />
+            <End Role="PCI" EntitySet="PCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PCI__filtertypeI__4316F928" Association="Self.FK__PCI__filtertypeI__4316F928">
+            <End Role="filterTypeRef" EntitySet="filterTypeRef" />
+            <End Role="PCI" EntitySet="PCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PII__FID__3E52440B" Association="Self.FK__PII__FID__3E52440B">
+            <End Role="fileInfo" EntitySet="fileInfo" />
+            <End Role="PII" EntitySet="PII" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PII__filtertypeI__3F466844" Association="Self.FK__PII__filtertypeI__3F466844">
+            <End Role="filterTypeRef" EntitySet="filterTypeRef" />
+            <End Role="PII" EntitySet="PII" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RET__FID__45F365D3" Association="Self.FK__RET__FID__45F365D3">
+            <End Role="fileInfo" EntitySet="fileInfo" />
+            <End Role="RET" EntitySet="RET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RET__filtertypeI__46E78A0C" Association="Self.FK__RET__filtertypeI__46E78A0C">
+            <End Role="filterTypeRef" EntitySet="filterTypeRef" />
+            <End Role="RET" EntitySet="RET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SPEC__FID__4D94879B" Association="Self.FK__SPEC__FID__4D94879B">
+            <End Role="fileInfo" EntitySet="fileInfo" />
+            <End Role="SPEC" EntitySet="SPEC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SPEC__filtertype__4E88ABD4" Association="Self.FK__SPEC__filtertype__4E88ABD4">
+            <End Role="filterTypeRef" EntitySet="filterTypeRef" />
+            <End Role="SPEC" EntitySet="SPEC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__unknown__FID__49C3F6B7" Association="Self.FK__unknown__FID__49C3F6B7">
+            <End Role="fileInfo" EntitySet="fileInfo" />
+            <End Role="unknown" EntitySet="unknown" />
+          </AssociationSet>
+          <AssociationSet Name="FK__unknown__filtert__4AB81AF0" Association="Self.FK__unknown__filtert__4AB81AF0">
+            <End Role="filterTypeRef" EntitySet="filterTypeRef" />
+            <End Role="unknown" EntitySet="unknown" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="V1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="actionType">
+          <Key>
+            <PropertyRef Name="actionTypeID" />
+          </Key>
+          <Property Name="actionTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="actionDesc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="nfsActions" Relationship="Self.FK__nfsAction__actio__5DCAEF64" FromRole="actionType" ToRole="nfsAction" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="empID" />
+          </Key>
+          <Property Name="empID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="employeeNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="opco" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="businessArDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="businessUnitDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="managerFirst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="managerLast" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="managerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="permFlag" Type="Int32" />
+          <Property Name="contractFlag" Type="Int32" />
+          <NavigationProperty Name="empRels" Relationship="Self.FK__empRel__EID__52593CB8" FromRole="employee" ToRole="empRel" />
+          <NavigationProperty Name="empRels1" Relationship="Self.FK__empRel__MID__534D60F1" FromRole="employee" ToRole="empRel" />
+          <NavigationProperty Name="nfsActions" Relationship="Self.FK__nfsAction__empID__5FB337D6" FromRole="employee" ToRole="nfsAction" />
+        </EntityType>
+        <EntityType Name="empRel">
+          <Key>
+            <PropertyRef Name="empRelId" />
+          </Key>
+          <Property Name="EID" Type="Int64" />
+          <Property Name="MID" Type="Int64" />
+          <Property Name="empRelId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="employee" Relationship="Self.FK__empRel__EID__52593CB8" FromRole="empRel" ToRole="employee" />
+          <NavigationProperty Name="employee1" Relationship="Self.FK__empRel__MID__534D60F1" FromRole="empRel" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="fileInfo">
+          <Key>
+            <PropertyRef Name="FID" />
+          </Key>
+          <Property Name="FID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="volID" Type="Int64" />
+          <Property Name="pciFlag" Type="Int32" />
+          <Property Name="piiFlag" Type="Int32" />
+          <Property Name="specFlag" Type="Int32" />
+          <Property Name="retFlag" Type="Int32" />
+          <Property Name="unknownFlag" Type="Int32" />
+          <Property Name="publicFlag" Type="Int32" />
+          <Property Name="internalFlag" Type="Int32" />
+          <Property Name="confidentialFlag" Type="Int32" />
+          <Property Name="confidentialsFlag" Type="Int32" />
+          <Property Name="secretFlag" Type="Int32" />
+          <NavigationProperty Name="volume" Relationship="Self.FK__fileInfo__volID__398D8EEE" FromRole="fileInfo" ToRole="volume" />
+          <NavigationProperty Name="fileNotes" Relationship="Self.FK__fileNote__FID__5629CD9C" FromRole="fileInfo" ToRole="fileNote" />
+          <NavigationProperty Name="fileNoteFIDRels" Relationship="Self.FK__fileNoteFID__FID__5812160E" FromRole="fileInfo" ToRole="fileNoteFIDRel" />
+          <NavigationProperty Name="nfsActions" Relationship="Self.FK__nfsAction__FID__5EBF139D" FromRole="fileInfo" ToRole="nfsAction" />
+          <NavigationProperty Name="PCIs" Relationship="Self.FK__PCI__FID__4222D4EF" FromRole="fileInfo" ToRole="PCI" />
+          <NavigationProperty Name="PIIs" Relationship="Self.FK__PII__FID__3E52440B" FromRole="fileInfo" ToRole="PII" />
+          <NavigationProperty Name="RETs" Relationship="Self.FK__RET__FID__45F365D3" FromRole="fileInfo" ToRole="RET" />
+          <NavigationProperty Name="SPECs" Relationship="Self.FK__SPEC__FID__4D94879B" FromRole="fileInfo" ToRole="SPEC" />
+          <NavigationProperty Name="unknowns" Relationship="Self.FK__unknown__FID__49C3F6B7" FromRole="fileInfo" ToRole="unknown" />
+        </EntityType>
+        <EntityType Name="fileNote">
+          <Key>
+            <PropertyRef Name="fileNoteID" />
+          </Key>
+          <Property Name="fileNoteID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FID" Type="Int64" />
+          <Property Name="note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="noteTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="fileInfo" Relationship="Self.FK__fileNote__FID__5629CD9C" FromRole="fileNote" ToRole="fileInfo" />
+          <NavigationProperty Name="fileNoteFIDRels" Relationship="Self.FK__fileNoteF__fileN__59063A47" FromRole="fileNote" ToRole="fileNoteFIDRel" />
+        </EntityType>
+        <EntityType Name="fileNoteFIDRel">
+          <Key>
+            <PropertyRef Name="fileNoteFIDRelId" />
+          </Key>
+          <Property Name="FID" Type="Int64" />
+          <Property Name="fileNoteID" Type="Int64" />
+          <Property Name="fileNoteFIDRelId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="fileInfo" Relationship="Self.FK__fileNoteFID__FID__5812160E" FromRole="fileNoteFIDRel" ToRole="fileInfo" />
+          <NavigationProperty Name="fileNote" Relationship="Self.FK__fileNoteF__fileN__59063A47" FromRole="fileNoteFIDRel" ToRole="fileNote" />
+        </EntityType>
+        <EntityType Name="filterTypeRef">
+          <Key>
+            <PropertyRef Name="filterTypeID" />
+          </Key>
+          <Property Name="filterTypeID" Type="Int32" Nullable="false" />
+          <Property Name="filterDescription" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PCIs" Relationship="Self.FK__PCI__filtertypeI__4316F928" FromRole="filterTypeRef" ToRole="PCI" />
+          <NavigationProperty Name="PIIs" Relationship="Self.FK__PII__filtertypeI__3F466844" FromRole="filterTypeRef" ToRole="PII" />
+          <NavigationProperty Name="RETs" Relationship="Self.FK__RET__filtertypeI__46E78A0C" FromRole="filterTypeRef" ToRole="RET" />
+          <NavigationProperty Name="SPECs" Relationship="Self.FK__SPEC__filtertype__4E88ABD4" FromRole="filterTypeRef" ToRole="SPEC" />
+          <NavigationProperty Name="unknowns" Relationship="Self.FK__unknown__filtert__4AB81AF0" FromRole="filterTypeRef" ToRole="unknown" />
+        </EntityType>
+        <EntityType Name="nfsAction">
+          <Key>
+            <PropertyRef Name="actionID" />
+          </Key>
+          <Property Name="actionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="actionTypeID" Type="Int32" />
+          <Property Name="FID" Type="Int64" />
+          <Property Name="empID" Type="Int64" />
+          <Property Name="actionTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="actionType" Relationship="Self.FK__nfsAction__actio__5DCAEF64" FromRole="nfsAction" ToRole="actionType" />
+          <NavigationProperty Name="employee" Relationship="Self.FK__nfsAction__empID__5FB337D6" FromRole="nfsAction" ToRole="employee" />
+          <NavigationProperty Name="fileInfo" Relationship="Self.FK__nfsAction__FID__5EBF139D" FromRole="nfsAction" ToRole="fileInfo" />
+        </EntityType>
+        <EntityType Name="PCI">
+          <Key>
+            <PropertyRef Name="pciID" />
+          </Key>
+          <Property Name="FID" Type="Int64" />
+          <Property Name="pciID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="filtertypeID" Type="Int32" />
+          <Property Name="pciFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="pciPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="pciContainerPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="pciVolumeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pciObjectType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pciOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pciSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pciCtime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pciMTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pciATime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pciMD5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="fileInfo" Relationship="Self.FK__PCI__FID__4222D4EF" FromRole="PCI" ToRole="fileInfo" />
+          <NavigationProperty Name="filterTypeRef" Relationship="Self.FK__PCI__filtertypeI__4316F928" FromRole="PCI" ToRole="filterTypeRef" />
+        </EntityType>
+        <EntityType Name="PII">
+          <Key>
+            <PropertyRef Name="piiID" />
+          </Key>
+          <Property Name="FID" Type="Int64" />
+          <Property Name="piiID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="filtertypeID" Type="Int32" />
+          <Property Name="piiFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="piiPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="piiContainerPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="piiVolumeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="piiObjectType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="piiOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="piiSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="piiCtime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="piiMTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="piiATime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="piiMD5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="fileInfo" Relationship="Self.FK__PII__FID__3E52440B" FromRole="PII" ToRole="fileInfo" />
+          <NavigationProperty Name="filterTypeRef" Relationship="Self.FK__PII__filtertypeI__3F466844" FromRole="PII" ToRole="filterTypeRef" />
+        </EntityType>
+        <EntityType Name="RET">
+          <Key>
+            <PropertyRef Name="retID" />
+          </Key>
+          <Property Name="FID" Type="Int64" />
+          <Property Name="retID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="filtertypeID" Type="Int32" />
+          <Property Name="retFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="retPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="retContainerPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="retVolumeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="retObjectType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="retOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="retSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="retCtime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="retMTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="retATime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="retMD5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="fileInfo" Relationship="Self.FK__RET__FID__45F365D3" FromRole="RET" ToRole="fileInfo" />
+          <NavigationProperty Name="filterTypeRef" Relationship="Self.FK__RET__filtertypeI__46E78A0C" FromRole="RET" ToRole="filterTypeRef" />
+        </EntityType>
+        <EntityType Name="SPEC">
+          <Key>
+            <PropertyRef Name="specID" />
+          </Key>
+          <Property Name="FID" Type="Int64" />
+          <Property Name="specID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="filtertypeID" Type="Int32" />
+          <Property Name="specFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="specPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="specContainerPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="specVolumeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="specObjectType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="specOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="specSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="specCtime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="specMTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="specATime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="specMD5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="fileInfo" Relationship="Self.FK__SPEC__FID__4D94879B" FromRole="SPEC" ToRole="fileInfo" />
+          <NavigationProperty Name="filterTypeRef" Relationship="Self.FK__SPEC__filtertype__4E88ABD4" FromRole="SPEC" ToRole="filterTypeRef" />
+        </EntityType>
+        <EntityType Name="unknown">
+          <Key>
+            <PropertyRef Name="unkID" />
+          </Key>
+          <Property Name="FID" Type="Int64" />
+          <Property Name="unkID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="filtertypeID" Type="Int32" />
+          <Property Name="unkFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="unkPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="unkContainerPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="unkVolumeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="unkObjectType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="unkOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="unkSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="unkCtime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="unkMTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="unkATime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="unkMD5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="fileInfo" Relationship="Self.FK__unknown__FID__49C3F6B7" FromRole="unknown" ToRole="fileInfo" />
+          <NavigationProperty Name="filterTypeRef" Relationship="Self.FK__unknown__filtert__4AB81AF0" FromRole="unknown" ToRole="filterTypeRef" />
+        </EntityType>
+        <EntityType Name="volume">
+          <Key>
+            <PropertyRef Name="volID" />
+          </Key>
+          <Property Name="volID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="volumeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="volumeLastRefresh" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="fileInfoes" Relationship="Self.FK__fileInfo__volID__398D8EEE" FromRole="volume" ToRole="fileInfo" />
+        </EntityType>
+        <Association Name="FK__nfsAction__actio__5DCAEF64">
+          <End Role="actionType" Type="Self.actionType" Multiplicity="0..1" />
+          <End Role="nfsAction" Type="Self.nfsAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="actionType">
+              <PropertyRef Name="actionTypeID" />
+            </Principal>
+            <Dependent Role="nfsAction">
+              <PropertyRef Name="actionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__empRel__EID__52593CB8">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="empRel" Type="Self.empRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="empID" />
+            </Principal>
+            <Dependent Role="empRel">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__empRel__MID__534D60F1">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="empRel" Type="Self.empRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="empID" />
+            </Principal>
+            <Dependent Role="empRel">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__nfsAction__empID__5FB337D6">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="nfsAction" Type="Self.nfsAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="empID" />
+            </Principal>
+            <Dependent Role="nfsAction">
+              <PropertyRef Name="empID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__fileInfo__volID__398D8EEE">
+          <End Role="volume" Type="Self.volume" Multiplicity="0..1" />
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="volume">
+              <PropertyRef Name="volID" />
+            </Principal>
+            <Dependent Role="fileInfo">
+              <PropertyRef Name="volID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__fileNote__FID__5629CD9C">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="fileNote" Type="Self.fileNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="fileNote">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__fileNoteFID__FID__5812160E">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="fileNoteFIDRel" Type="Self.fileNoteFIDRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="fileNoteFIDRel">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__nfsAction__FID__5EBF139D">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="nfsAction" Type="Self.nfsAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="nfsAction">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PCI__FID__4222D4EF">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="PCI" Type="Self.PCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="PCI">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PII__FID__3E52440B">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="PII" Type="Self.PII" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="PII">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RET__FID__45F365D3">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="RET" Type="Self.RET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="RET">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SPEC__FID__4D94879B">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="SPEC" Type="Self.SPEC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="SPEC">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__unknown__FID__49C3F6B7">
+          <End Role="fileInfo" Type="Self.fileInfo" Multiplicity="0..1" />
+          <End Role="unknown" Type="Self.unknown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileInfo">
+              <PropertyRef Name="FID" />
+            </Principal>
+            <Dependent Role="unknown">
+              <PropertyRef Name="FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__fileNoteF__fileN__59063A47">
+          <End Role="fileNote" Type="Self.fileNote" Multiplicity="0..1" />
+          <End Role="fileNoteFIDRel" Type="Self.fileNoteFIDRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fileNote">
+              <PropertyRef Name="fileNoteID" />
+            </Principal>
+            <Dependent Role="fileNoteFIDRel">
+              <PropertyRef Name="fileNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PCI__filtertypeI__4316F928">
+          <End Role="filterTypeRef" Type="Self.filterTypeRef" Multiplicity="0..1" />
+          <End Role="PCI" Type="Self.PCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filterTypeRef">
+              <PropertyRef Name="filterTypeID" />
+            </Principal>
+            <Dependent Role="PCI">
+              <PropertyRef Name="filtertypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PII__filtertypeI__3F466844">
+          <End Role="filterTypeRef" Type="Self.filterTypeRef" Multiplicity="0..1" />
+          <End Role="PII" Type="Self.PII" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filterTypeRef">
+              <PropertyRef Name="filterTypeID" />
+            </Principal>
+            <Dependent Role="PII">
+              <PropertyRef Name="filtertypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RET__filtertypeI__46E78A0C">
+          <End Role="filterTypeRef" Type="Self.filterTypeRef" Multiplicity="0..1" />
+          <End Role="RET" Type="Self.RET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filterTypeRef">
+              <PropertyRef Name="filterTypeID" />
+            </Principal>
+            <Dependent Role="RET">
+              <PropertyRef Name="filtertypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SPEC__filtertype__4E88ABD4">
+          <End Role="filterTypeRef" Type="Self.filterTypeRef" Multiplicity="0..1" />
+          <End Role="SPEC" Type="Self.SPEC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filterTypeRef">
+              <PropertyRef Name="filterTypeID" />
+            </Principal>
+            <Dependent Role="SPEC">
+              <PropertyRef Name="filtertypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__unknown__filtert__4AB81AF0">
+          <End Role="filterTypeRef" Type="Self.filterTypeRef" Multiplicity="0..1" />
+          <End Role="unknown" Type="Self.unknown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filterTypeRef">
+              <PropertyRef Name="filterTypeID" />
+            </Principal>
+            <Dependent Role="unknown">
+              <PropertyRef Name="filtertypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="V1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="actionTypes" EntityType="Self.actionType" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="empRels" EntityType="Self.empRel" />
+          <EntitySet Name="fileInfoes" EntityType="Self.fileInfo" />
+          <EntitySet Name="fileNotes" EntityType="Self.fileNote" />
+          <EntitySet Name="fileNoteFIDRels" EntityType="Self.fileNoteFIDRel" />
+          <EntitySet Name="filterTypeRefs" EntityType="Self.filterTypeRef" />
+          <EntitySet Name="nfsActions" EntityType="Self.nfsAction" />
+          <EntitySet Name="PCIs" EntityType="Self.PCI" />
+          <EntitySet Name="PIIs" EntityType="Self.PII" />
+          <EntitySet Name="RETs" EntityType="Self.RET" />
+          <EntitySet Name="SPECs" EntityType="Self.SPEC" />
+          <EntitySet Name="unknowns" EntityType="Self.unknown" />
+          <EntitySet Name="volumes" EntityType="Self.volume" />
+          <AssociationSet Name="FK__nfsAction__actio__5DCAEF64" Association="Self.FK__nfsAction__actio__5DCAEF64">
+            <End Role="actionType" EntitySet="actionTypes" />
+            <End Role="nfsAction" EntitySet="nfsActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__empRel__EID__52593CB8" Association="Self.FK__empRel__EID__52593CB8">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="empRel" EntitySet="empRels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__empRel__MID__534D60F1" Association="Self.FK__empRel__MID__534D60F1">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="empRel" EntitySet="empRels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__nfsAction__empID__5FB337D6" Association="Self.FK__nfsAction__empID__5FB337D6">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="nfsAction" EntitySet="nfsActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__fileInfo__volID__398D8EEE" Association="Self.FK__fileInfo__volID__398D8EEE">
+            <End Role="volume" EntitySet="volumes" />
+            <End Role="fileInfo" EntitySet="fileInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__fileNote__FID__5629CD9C" Association="Self.FK__fileNote__FID__5629CD9C">
+            <End Role="fileInfo" EntitySet="fileInfoes" />
+            <End Role="fileNote" EntitySet="fileNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__fileNoteFID__FID__5812160E" Association="Self.FK__fileNoteFID__FID__5812160E">
+            <End Role="fileInfo" EntitySet="fileInfoes" />
+            <End Role="fileNoteFIDRel" EntitySet="fileNoteFIDRels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__nfsAction__FID__5EBF139D" Association="Self.FK__nfsAction__FID__5EBF139D">
+            <End Role="fileInfo" EntitySet="fileInfoes" />
+            <End Role="nfsAction" EntitySet="nfsActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PCI__FID__4222D4EF" Association="Self.FK__PCI__FID__4222D4EF">
+            <End Role="fileInfo" EntitySet="fileInfoes" />
+            <End Role="PCI" EntitySet="PCIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PII__FID__3E52440B" Association="Self.FK__PII__FID__3E52440B">
+            <End Role="fileInfo" EntitySet="fileInfoes" />
+            <End Role="PII" EntitySet="PIIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RET__FID__45F365D3" Association="Self.FK__RET__FID__45F365D3">
+            <End Role="fileInfo" EntitySet="fileInfoes" />
+            <End Role="RET" EntitySet="RETs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SPEC__FID__4D94879B" Association="Self.FK__SPEC__FID__4D94879B">
+            <End Role="fileInfo" EntitySet="fileInfoes" />
+            <End Role="SPEC" EntitySet="SPECs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__unknown__FID__49C3F6B7" Association="Self.FK__unknown__FID__49C3F6B7">
+            <End Role="fileInfo" EntitySet="fileInfoes" />
+            <End Role="unknown" EntitySet="unknowns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__fileNoteF__fileN__59063A47" Association="Self.FK__fileNoteF__fileN__59063A47">
+            <End Role="fileNote" EntitySet="fileNotes" />
+            <End Role="fileNoteFIDRel" EntitySet="fileNoteFIDRels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PCI__filtertypeI__4316F928" Association="Self.FK__PCI__filtertypeI__4316F928">
+            <End Role="filterTypeRef" EntitySet="filterTypeRefs" />
+            <End Role="PCI" EntitySet="PCIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PII__filtertypeI__3F466844" Association="Self.FK__PII__filtertypeI__3F466844">
+            <End Role="filterTypeRef" EntitySet="filterTypeRefs" />
+            <End Role="PII" EntitySet="PIIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RET__filtertypeI__46E78A0C" Association="Self.FK__RET__filtertypeI__46E78A0C">
+            <End Role="filterTypeRef" EntitySet="filterTypeRefs" />
+            <End Role="RET" EntitySet="RETs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SPEC__filtertype__4E88ABD4" Association="Self.FK__SPEC__filtertype__4E88ABD4">
+            <End Role="filterTypeRef" EntitySet="filterTypeRefs" />
+            <End Role="SPEC" EntitySet="SPECs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__unknown__filtert__4AB81AF0" Association="Self.FK__unknown__filtert__4AB81AF0">
+            <End Role="filterTypeRef" EntitySet="filterTypeRefs" />
+            <End Role="unknown" EntitySet="unknowns" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="V1ModelStoreContainer" CdmEntityContainer="V1Entities">
+          <EntitySetMapping Name="actionTypes">
+            <EntityTypeMapping TypeName="V1Model.actionType">
+              <MappingFragment StoreEntitySet="actionType">
+                <ScalarProperty Name="actionTypeID" ColumnName="actionTypeID" />
+                <ScalarProperty Name="actionDesc" ColumnName="actionDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="V1Model.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="empID" ColumnName="empID" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="employeeNo" ColumnName="employeeNo" />
+                <ScalarProperty Name="opco" ColumnName="opco" />
+                <ScalarProperty Name="businessArDesc" ColumnName="businessArDesc" />
+                <ScalarProperty Name="businessUnitDesc" ColumnName="businessUnitDesc" />
+                <ScalarProperty Name="managerFirst" ColumnName="managerFirst" />
+                <ScalarProperty Name="managerLast" ColumnName="managerLast" />
+                <ScalarProperty Name="managerEmail" ColumnName="managerEmail" />
+                <ScalarProperty Name="permFlag" ColumnName="permFlag" />
+                <ScalarProperty Name="contractFlag" ColumnName="contractFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="empRels">
+            <EntityTypeMapping TypeName="V1Model.empRel">
+              <MappingFragment StoreEntitySet="empRel">
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="empRelId" ColumnName="empRelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fileInfoes">
+            <EntityTypeMapping TypeName="V1Model.fileInfo">
+              <MappingFragment StoreEntitySet="fileInfo">
+                <ScalarProperty Name="FID" ColumnName="FID" />
+                <ScalarProperty Name="volID" ColumnName="volID" />
+                <ScalarProperty Name="pciFlag" ColumnName="pciFlag" />
+                <ScalarProperty Name="piiFlag" ColumnName="piiFlag" />
+                <ScalarProperty Name="specFlag" ColumnName="specFlag" />
+                <ScalarProperty Name="retFlag" ColumnName="retFlag" />
+                <ScalarProperty Name="unknownFlag" ColumnName="unknownFlag" />
+                <ScalarProperty Name="publicFlag" ColumnName="publicFlag" />
+                <ScalarProperty Name="internalFlag" ColumnName="internalFlag" />
+                <ScalarProperty Name="confidentialFlag" ColumnName="confidentialFlag" />
+                <ScalarProperty Name="confidentialsFlag" ColumnName="confidentialsFlag" />
+                <ScalarProperty Name="secretFlag" ColumnName="secretFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fileNotes">
+            <EntityTypeMapping TypeName="V1Model.fileNote">
+              <MappingFragment StoreEntitySet="fileNote">
+                <ScalarProperty Name="fileNoteID" ColumnName="fileNoteID" />
+                <ScalarProperty Name="FID" ColumnName="FID" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="noteTime" ColumnName="noteTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fileNoteFIDRels">
+            <EntityTypeMapping TypeName="V1Model.fileNoteFIDRel">
+              <MappingFragment StoreEntitySet="fileNoteFIDRel">
+                <ScalarProperty Name="FID" ColumnName="FID" />
+                <ScalarProperty Name="fileNoteID" ColumnName="fileNoteID" />
+                <ScalarProperty Name="fileNoteFIDRelId" ColumnName="fileNoteFIDRelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filterTypeRefs">
+            <EntityTypeMapping TypeName="V1Model.filterTypeRef">
+              <MappingFragment StoreEntitySet="filterTypeRef">
+                <ScalarProperty Name="filterTypeID" ColumnName="filterTypeID" />
+                <ScalarProperty Name="filterDescription" ColumnName="filterDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nfsActions">
+            <EntityTypeMapping TypeName="V1Model.nfsAction">
+              <MappingFragment StoreEntitySet="nfsAction">
+                <ScalarProperty Name="actionID" ColumnName="actionID" />
+                <ScalarProperty Name="actionTypeID" ColumnName="actionTypeID" />
+                <ScalarProperty Name="FID" ColumnName="FID" />
+                <ScalarProperty Name="empID" ColumnName="empID" />
+                <ScalarProperty Name="actionTime" ColumnName="actionTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PCIs">
+            <EntityTypeMapping TypeName="V1Model.PCI">
+              <MappingFragment StoreEntitySet="PCI">
+                <ScalarProperty Name="FID" ColumnName="FID" />
+                <ScalarProperty Name="pciID" ColumnName="pciID" />
+                <ScalarProperty Name="filtertypeID" ColumnName="filtertypeID" />
+                <ScalarProperty Name="pciFileName" ColumnName="pciFileName" />
+                <ScalarProperty Name="pciPath" ColumnName="pciPath" />
+                <ScalarProperty Name="pciContainerPath" ColumnName="pciContainerPath" />
+                <ScalarProperty Name="pciVolumeName" ColumnName="pciVolumeName" />
+                <ScalarProperty Name="pciObjectType" ColumnName="pciObjectType" />
+                <ScalarProperty Name="pciOwner" ColumnName="pciOwner" />
+                <ScalarProperty Name="pciSize" ColumnName="pciSize" />
+                <ScalarProperty Name="pciCtime" ColumnName="pciCtime" />
+                <ScalarProperty Name="pciMTime" ColumnName="pciMTime" />
+                <ScalarProperty Name="pciATime" ColumnName="pciATime" />
+                <ScalarProperty Name="pciMD5" ColumnName="pciMD5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PIIs">
+            <EntityTypeMapping TypeName="V1Model.PII">
+              <MappingFragment StoreEntitySet="PII">
+                <ScalarProperty Name="FID" ColumnName="FID" />
+                <ScalarProperty Name="piiID" ColumnName="piiID" />
+                <ScalarProperty Name="filtertypeID" ColumnName="filtertypeID" />
+                <ScalarProperty Name="piiFileName" ColumnName="piiFileName" />
+                <ScalarProperty Name="piiPath" ColumnName="piiPath" />
+                <ScalarProperty Name="piiContainerPath" ColumnName="piiContainerPath" />
+                <ScalarProperty Name="piiVolumeName" ColumnName="piiVolumeName" />
+                <ScalarProperty Name="piiObjectType" ColumnName="piiObjectType" />
+                <ScalarProperty Name="piiOwner" ColumnName="piiOwner" />
+                <ScalarProperty Name="piiSize" ColumnName="piiSize" />
+                <ScalarProperty Name="piiCtime" ColumnName="piiCtime" />
+                <ScalarProperty Name="piiMTime" ColumnName="piiMTime" />
+                <ScalarProperty Name="piiATime" ColumnName="piiATime" />
+                <ScalarProperty Name="piiMD5" ColumnName="piiMD5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RETs">
+            <EntityTypeMapping TypeName="V1Model.RET">
+              <MappingFragment StoreEntitySet="RET">
+                <ScalarProperty Name="FID" ColumnName="FID" />
+                <ScalarProperty Name="retID" ColumnName="retID" />
+                <ScalarProperty Name="filtertypeID" ColumnName="filtertypeID" />
+                <ScalarProperty Name="retFileName" ColumnName="retFileName" />
+                <ScalarProperty Name="retPath" ColumnName="retPath" />
+                <ScalarProperty Name="retContainerPath" ColumnName="retContainerPath" />
+                <ScalarProperty Name="retVolumeName" ColumnName="retVolumeName" />
+                <ScalarProperty Name="retObjectType" ColumnName="retObjectType" />
+                <ScalarProperty Name="retOwner" ColumnName="retOwner" />
+                <ScalarProperty Name="retSize" ColumnName="retSize" />
+                <ScalarProperty Name="retCtime" ColumnName="retCtime" />
+                <ScalarProperty Name="retMTime" ColumnName="retMTime" />
+                <ScalarProperty Name="retATime" ColumnName="retATime" />
+                <ScalarProperty Name="retMD5" ColumnName="retMD5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPECs">
+            <EntityTypeMapping TypeName="V1Model.SPEC">
+              <MappingFragment StoreEntitySet="SPEC">
+                <ScalarProperty Name="FID" ColumnName="FID" />
+                <ScalarProperty Name="specID" ColumnName="specID" />
+                <ScalarProperty Name="filtertypeID" ColumnName="filtertypeID" />
+                <ScalarProperty Name="specFileName" ColumnName="specFileName" />
+                <ScalarProperty Name="specPath" ColumnName="specPath" />
+                <ScalarProperty Name="specContainerPath" ColumnName="specContainerPath" />
+                <ScalarProperty Name="specVolumeName" ColumnName="specVolumeName" />
+                <ScalarProperty Name="specObjectType" ColumnName="specObjectType" />
+                <ScalarProperty Name="specOwner" ColumnName="specOwner" />
+                <ScalarProperty Name="specSize" ColumnName="specSize" />
+                <ScalarProperty Name="specCtime" ColumnName="specCtime" />
+                <ScalarProperty Name="specMTime" ColumnName="specMTime" />
+                <ScalarProperty Name="specATime" ColumnName="specATime" />
+                <ScalarProperty Name="specMD5" ColumnName="specMD5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unknowns">
+            <EntityTypeMapping TypeName="V1Model.unknown">
+              <MappingFragment StoreEntitySet="unknown">
+                <ScalarProperty Name="FID" ColumnName="FID" />
+                <ScalarProperty Name="unkID" ColumnName="unkID" />
+                <ScalarProperty Name="filtertypeID" ColumnName="filtertypeID" />
+                <ScalarProperty Name="unkFileName" ColumnName="unkFileName" />
+                <ScalarProperty Name="unkPath" ColumnName="unkPath" />
+                <ScalarProperty Name="unkContainerPath" ColumnName="unkContainerPath" />
+                <ScalarProperty Name="unkVolumeName" ColumnName="unkVolumeName" />
+                <ScalarProperty Name="unkObjectType" ColumnName="unkObjectType" />
+                <ScalarProperty Name="unkOwner" ColumnName="unkOwner" />
+                <ScalarProperty Name="unkSize" ColumnName="unkSize" />
+                <ScalarProperty Name="unkCtime" ColumnName="unkCtime" />
+                <ScalarProperty Name="unkMTime" ColumnName="unkMTime" />
+                <ScalarProperty Name="unkATime" ColumnName="unkATime" />
+                <ScalarProperty Name="unkMD5" ColumnName="unkMD5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="volumes">
+            <EntityTypeMapping TypeName="V1Model.volume">
+              <MappingFragment StoreEntitySet="volume">
+                <ScalarProperty Name="volID" ColumnName="volID" />
+                <ScalarProperty Name="volumeName" ColumnName="volumeName" />
+                <ScalarProperty Name="volumeLastRefresh" ColumnName="volumeLastRefresh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

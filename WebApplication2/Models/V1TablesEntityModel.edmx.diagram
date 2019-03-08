@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3037af5c26a04d99881729a9987eaf02" Name="Diagram1" ZoomLevel="57">
+        <EntityTypeShape EntityType="V1Model.actionType" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.employee" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.empRel" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.fileInfo" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.fileNote" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.fileNoteFIDRel" Width="1.5" PointX="7.5" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.filterTypeRef" Width="1.5" PointX="9" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.nfsAction" Width="1.5" PointX="8.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.PCI" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.PII" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.RET" Width="1.5" PointX="8.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.SPEC" Width="1.5" PointX="11.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.unknown" Width="1.5" PointX="11.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="V1Model.volume" Width="1.5" PointX="0.75" PointY="16.25" IsExpanded="true" />
+        <AssociationConnector Association="V1Model.FK__nfsAction__actio__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__empRel__EID__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__empRel__MID__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__nfsAction__empID__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__fileInfo__volID__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__fileNote__FID__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__fileNoteFID__FID__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__nfsAction__FID__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__PCI__FID__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__PII__FID__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__RET__FID__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__SPEC__FID__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__unknown__FID__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__fileNoteF__fileN__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__PCI__filtertypeI__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__PII__filtertypeI__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__RET__filtertypeI__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__SPEC__filtertype__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="V1Model.FK__unknown__filtert__4AB81AF0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<WebApplication2.Models.fileInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pciFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.piiFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.specFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.retFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.unknownFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.publicFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.internalFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.confidentialFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.confidentialsFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.secretFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volume.volumeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pciFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.piiFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.specFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.retFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.unknownFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.publicFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.internalFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.confidentialFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.confidentialsFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.secretFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volume.volumeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FID })
+        </td>
+    </tr>
+}
+
+</table>

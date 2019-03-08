@@ -1,0 +1,106 @@
+﻿@model WebApplication2.Models.fileInfo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>fileInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pciFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pciFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.piiFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.piiFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.specFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.specFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.retFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.retFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.unknownFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.unknownFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.publicFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.publicFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.internalFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.internalFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.confidentialFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.confidentialFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.confidentialsFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.confidentialsFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.secretFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.secretFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volume.volumeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volume.volumeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
